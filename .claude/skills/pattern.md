@@ -1,0 +1,65 @@
+---
+name: pattern
+description: ECC から発見した設計パターンを Output/04_patterns/ に抽出・記録する
+---
+
+# /pattern — パターン抽出スキル
+
+ECC を読んでいて発見した再利用可能な設計パターンを `Output/04_patterns/` に記録する。
+ここに蓄積したパターンが、自分でハーネスを設計するときの武器庫になる。
+
+## 使い方
+
+```
+/pattern <パターン名>
+
+例:
+  /pattern agent-routing-pattern
+  /pattern feedback-loop-pattern
+  /pattern hook-pre-post-pattern
+  /pattern skill-on-demand-loading
+```
+
+## パターン記録の手順
+
+1. **パターンを識別**: 「これは再利用できる設計だ」と感じたものを対象にする
+2. **ECC の実装を確認**: パターンが使われている箇所を Read / Grep で確認する
+3. **パターンファイルを作成**: `Output/04_patterns/{パターン名}.md`
+4. **カタログに追記**: `Output/04_patterns/README.md` のカテゴリ一覧に追加する
+
+## 出力テンプレート
+
+```markdown
+# {パターン名}
+
+**カテゴリ**: routing / trigger / loop / recovery / context / その他
+**発見日**: YYYY-MM-DD
+**発見元**: ECC/{ファイルパス}
+
+## 問題
+（このパターンが解決する課題・なければ困る理由）
+
+## 解決策
+（パターンの概要・構造・動作の流れ）
+
+## 実装例（ECC より）
+（ECCの実際のコード・設定を引用または要約）
+
+## 自分の解釈・応用
+（個人開発や仕事でどう使えるか）
+
+## 注意点・適用条件
+（落とし穴・適用すべきでないケース）
+
+## 関連パターン
+（他のパターンとの組み合わせ・対比）
+```
+
+## パターンのカテゴリ
+
+- `routing` — エージェントの振り分け・委譲設計
+- `trigger` — スキル・フックの起動条件設計
+- `loop` — フィードバック・改善ループ設計
+- `recovery` — エラー検出・リカバリ設計
+- `context` — コンテキスト管理・予算設計
+- `format` — 入出力フォーマット設計

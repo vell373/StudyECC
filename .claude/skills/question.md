@@ -1,0 +1,62 @@
+---
+name: question
+description: ECC を読んでいて湧いた疑問を Output/06_questions/open/ に記録する
+---
+
+# /question — 疑問記録スキル
+
+ECC を読んでいて「なぜ？」「どうして？」と思ったことを `Output/06_questions/open/` に記録する。
+未解決のまま残しておき、理解が深まったときに `resolved/` に移動する。
+
+## 使い方
+
+```
+/question <疑問の内容>
+
+例:
+  /question なぜ skills と commands を分けて設計しているのか
+  /question hook の matcher 条件はどうやって評価されるのか
+  /question agent に tools を渡す方法が frontmatter とprompt の2種類あるのはなぜか
+```
+
+## 疑問記録の手順
+
+1. **疑問を明確にする**: 「何が」「なぜ」分からないかを一文で表現する
+2. **ファイルを作成**: `Output/06_questions/open/{疑問タイトル}.md`
+3. **現時点の仮説を書く**: 分からなくても今の推測を書いておく
+4. **README のインデックスを更新**: `Output/06_questions/README.md` の未解決一覧に追記
+
+## 出力テンプレート
+
+```markdown
+# {疑問のタイトル}
+
+**起票日**: YYYY-MM-DD
+**状態**: 未解決
+**関連**: ECC/{ファイルパス} または Output/{参照先}
+
+## 疑問の内容
+（具体的に何が分からないか）
+
+## なぜ疑問に思ったか
+（どのコードや設計を見てこの疑問が湧いたか）
+
+## 現時点の仮説
+（今の時点での自分の推測。分からなければ「仮説なし」でOK）
+```
+
+## 解決したときの手順
+
+1. `open/` から `resolved/` にファイルを移動する
+2. ファイルに以下を追記する:
+
+```markdown
+---
+## 解答
+（判明した答え）
+
+**解決日**: YYYY-MM-DD
+**参照**: （答えが見つかったソース）
+```
+
+3. `Output/06_questions/README.md` のインデックスを更新する
