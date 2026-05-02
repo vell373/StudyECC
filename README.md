@@ -2,6 +2,8 @@
 
 このプロジェクトは、**ECC（EverythingClaudeCode）** の高度なアーキテクチャを静的解析し、「**ハーネスエンジニアリング**」や「**コンテキストエンジニアリング**」のスキルを習得・実践するための学習リポジトリです。
 
+> **元リポジトリ (Reference)**: [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code)
+
 ECCの巨大な知識ベース（エージェント、スキル、ルール、フック）を解剖し、最終的には「ECCを参照せずに、同等レベルのAI開発ハーネスを自力で設計・実装できるようになること」を目標としています。
 
 ---
