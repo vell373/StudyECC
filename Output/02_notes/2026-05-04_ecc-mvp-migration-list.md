@@ -17,5 +17,6 @@
 - 特に `security-reviewer` と `typescript-reviewer` を初期から組み込むことで、後からの大幅な手戻りを防ぐ。
 
 ## 次に調べること
-- 移植したエージェント（planner等）を現在のプロジェクト環境で実際に動かすためのフック（Hooks）の設定方法。
-- `skills/browser-qa` の具体的な中身と、Playwright等との連携。
+- [x] 移植したエージェント（planner等）を現在のプロジェクト環境で実際に動かすためのフック（Hooks）の設定方法。
+    - → [02_notes/2026-05-04_ecc-hooks-and-agent-trigger.md] で調査完了。
+- [ ] `skills/browser-qa` の具体的な中身と、Playwright等との連携。
