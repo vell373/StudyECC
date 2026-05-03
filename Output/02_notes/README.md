@@ -23,3 +23,5 @@ YYYY-MM-DD_{トピック}.md
 
 <!-- ノートが増えたらここに追記 -->
 - [2026-05-03 エージェント間のコンテキスト分離と設計思想](./2026-05-03_agent-context-isolation.md)
+- [2026-05-03 ECCにおける不変性（Immutability）の重要性](./2026-05-03_immutability-in-ecc.md)
+- [2026-05-04 ECCからのMVP移植リスト（拡張機能開発向け）](./2026-05-04_ecc-mvp-migration-list.md)
