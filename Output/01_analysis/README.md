@@ -42,6 +42,7 @@ AI によって ECC のフォルダ・ファイルを解析した内容を体系
 ## インデックス
 
 <!-- 解析ファイルが増えたらここに追記 -->
+- [agents/code-reviewer.md 解析](./agents_code-reviewer.md)
 - [agents/planner.md 解析](./agents_planner.md)
 - [ECC/SOUL.md 解析](./ECC_SOUL.md)
 - [ECC/CLAUDE.md 解析](./ECC_CLAUDE.md)
