@@ -83,6 +83,7 @@ AI によって ECC のフォルダ・ファイルを解析した内容を体系
 | [ECC_CLAUDE.md](./ecc_core/ECC_CLAUDE.md) | プロジェクト規約 | 2026-05-03 |
 | [ECC_RULES.md](./ecc_core/ECC_RULES.md) | ルール構成の解説 | 2026-05-03 |
 | [ECC_AGENTS.md](./ecc_core/ECC_AGENTS.md) | エージェント構成の解説 | 2026-05-03 |
+| [ecc_coreagents_strategy.md](./ecc_coreagents_strategy.md) | CoreAgents クロスプロジェクト共有戦略 | 2026-05-04 |
 
 ### agents（48 エージェント）
 
