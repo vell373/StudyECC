@@ -27,3 +27,4 @@ YYYY-MM-DD_{トピック}.md
 - [2026-05-04 ECCからのMVP移植リスト（拡張機能開発向け）](./2026-05-04_ecc-mvp-migration-list.md)
 - [2026-05-04 ECCにおけるフック（Hooks）によるエージェント駆動の仕組み](./2026-05-04_ecc-hooks-and-agent-trigger.md)
 - [2026-05-04 エージェントの動的プロビジョニング（スターターセット方式）](./2026-05-04_dynamic-agent-provisioning.md)
+- [2026-05-04 ECCにおける技術選定の役割分担（ArchitectとPlanner）](./2026-05-04_ecc-technology-selection.md)
