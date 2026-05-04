@@ -1,0 +1,36 @@
+{
+  "language": "japanese",
+  "permissions": {
+    "deny": [
+      "Edit(ECC/**)",
+      "Write(ECC/**)",
+      "Bash(rm * ECC/**)",
+      "Bash(mv ECC/**)"
+    ],
+    "allow": [
+      "Read(ECC/**)",
+      "Read(Output/**)",
+      "Write(Output/**)",
+      "Edit(Output/**)",
+      "Write(.claude/**)",
+      "Edit(.claude/**)",
+      "Write(CLAUDE.md)",
+      "Edit(CLAUDE.md)",
+      "Bash(git commit *)",
+      "Bash(git status *)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./.claude/hooks/check-uncommitted.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
