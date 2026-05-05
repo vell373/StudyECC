@@ -17,10 +17,23 @@
       "Write(CLAUDE.md)",
       "Edit(CLAUDE.md)",
       "Bash(git commit *)",
-      "Bash(git status *)"
+      "Bash(git status *)",
+      "Bash(.claude/skills/**)",
+      "Read(.claude/skills/**)"
     ]
   },
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./.claude/skills/continuous-learning/hooks/observe.sh pre"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "*",
@@ -28,6 +41,10 @@
           {
             "type": "command",
             "command": "./.claude/hooks/check-uncommitted.sh"
+          },
+          {
+            "type": "command",
+            "command": "./.claude/skills/continuous-learning/hooks/observe.sh post"
           }
         ]
       }
