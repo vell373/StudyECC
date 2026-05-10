@@ -1,0 +1,64 @@
+{
+  "task_type": "agent",
+  "theme": "agent-build / Theme A: PR Review Automation Harness",
+  "evaluated_at": "2026-05-09T00:00:00Z",
+  "rubric_path": "/Users/yasuvel/StudyECC/Output/07_comparisons/planner-model-comparison/rubrics/agent-build-rubric-theme-a.md",
+  "scale": "40-point total (4 axes × 10 points each) converted to 100-point scale via ×2.5",
+  "patterns": {
+    "opus-haiku": {
+      "scores": {
+        "requirements_fulfillment": 10,
+        "quality_structure": 9,
+        "completeness_functionality": 10,
+        "creativity_judgment": 8
+      },
+      "total": 37,
+      "score_rationale": {
+        "requirements_fulfillment": "Must-Have 9項目（M1-M9）をすべて実装。セキュリティ・品質エージェント・ハーネス・サンプル2件で検出率100%達成。出力フォーマットも仕様完全準拠。",
+        "quality_structure": "各エージェント200行以内（184/195行）で簡潔。責務分離明確だが、新規エージェント追加手順がドキュメントされていない。",
+        "completeness_functionality": "両サンプルで完璧な検出率（5/5脆弱性、9/9品質問題）。Markdown出力も完成度高く、エッジケース対応も記載。再現性確認済み。",
+        "creativity_judgment": "エッジケース対応は文書化されているが、実装例は最小限。Phase 2でのトレードオフ分析は仕様化されているが実装されていない。"
+      },
+      "notable_strengths": [
+        "検出率100%を両サンプルで達成した高精度な実装",
+        "200行以内の簡潔なエージェント定義で責務が明確",
+        "出力レポートの完成度が高く、実装者向けのアクションが明確"
+      ],
+      "notable_weaknesses": [
+        "新規エージェント追加手順が実装ドキュメントに含まれていない",
+        "矛盾検出・トレードオフ分析がPhase 2へ延期",
+        "設計判断の詳細説明がやや限定的"
+      ]
+    },
+    "haiku-opus": {
+      "scores": {
+        "requirements_fulfillment": 9,
+        "quality_structure": 10,
+        "completeness_functionality": 9,
+        "creativity_judgment": 10
+      },
+      "total": 38,
+      "score_rationale": {
+        "requirements_fulfillment": "Must-Have 6項目完全実装。Should-Have中の矛盾検出（Tradeoff分析）も仕様化済み。3体目エージェント（Phase 2）未実装のため減点1。",
+        "quality_structure": "簡潔なエージェント（192/251行）と包括的なハーネス（388行）で責務分離完璧。新規エージェント追加を5ステップで明確化。インターフェース標準化も記載。",
+        "completeness_functionality": "サンプル1で100%検出実証。Markdown出力完成度高い。エッジケース5パターン対応表を明記。pseudocode実装のため実行検証は実施されていない。",
+        "creativity_judgment": "Tradeoff Analysisセクション実装（仕様以上）。優先度分類（即座・次回・次リファ・ベストプラ）が独創的。仕様の曖昧部分を自律的に補完。"
+      },
+      "notable_strengths": [
+        "新規エージェント追加手順を5ステップで標準化し、拡張性を強調",
+        "Tradeoff Analysis等の仕様以上の工夫が複数存在",
+        "エッジケース対応を詳細な対応表で明示し、実装判断の根拠を明確化"
+      ],
+      "notable_weaknesses": [
+        "3体目エージェント（architecture/test）が実装されていない",
+        "実装がpseudocodeレベルのため、動作検証が実施されていない",
+        "矛盾検出ロジックの精度検証が不足している"
+      ]
+    }
+  },
+  "comparison": {
+    "score_difference": -1,
+    "winner": "haiku-opus",
+    "quality_gap_analysis": "両パターンともPhase 1のMust-Have要件を十分に満たしており、品質差は微細。opus-haikuは検出率100%を実装で実証し、completenessで優位。一方haiku-opusは新規エージェント追加手順の明確化、Tradeoff分析の実装化、エッジケース対応の詳細さで創造性・構造性で上回る。設計の包括性と拡張性の視点ではhaiku-opusが1点上。"
+  }
+}

@@ -1,0 +1,460 @@
+{
+  "review_date": "2026-05-09",
+  "theme": "theme-b (ポモドーロタイマー + タスク管理)",
+  "rubric_version": "webapp-rubric.md",
+  "patterns": {
+    "opus-haiku": {
+      "model_sequence": "Claude 3.5 Opus → Claude 3.5 Haiku",
+      "implementation_summary_path": "/Users/yasuvel/StudyECC/Output/07_comparisons/planner-model-comparison/webapp/theme-b/opus-haiku/output/implementation-summary.md",
+      "code_metrics": {
+        "total_lines": 1131,
+        "script_lines": 560,
+        "html_lines": 90,
+        "css_lines": 481
+      },
+      "scores": {
+        "axis_1_requirement_fulfillment": {
+          "must_have_implementation_rate": 60,
+          "description": "4/4 Must-Have 実装（ポモドーロ・セッション・タスク・永続化全て実装）",
+          "details": {
+            "pomodoro_timer": 15,
+            "session_counter": 10,
+            "task_crud": 20,
+            "localstorage_persistence": 15
+          }
+        },
+        "should_have_implementation": {
+          "score": 20,
+          "description": "4/4 Should-Have 実装（優先度・日付統計・ダークモード・プログレスバー全て実装）",
+          "count": 4,
+          "details": {
+            "priority_setting": 5,
+            "daily_record": 5,
+            "dark_mode": 5,
+            "progress_display": 5
+          }
+        },
+        "acceptance_criteria_accuracy": {
+          "score": 20,
+          "description": "受け入れ条件をすべて満たす。タイマー精度±2秒、日付変更リセット確実"
+        },
+        "axis_1_total": 100
+      },
+      "scores_axis_2_quality_structure": {
+        "code_quality": {
+          "score": 35,
+          "function_division": 12,
+          "naming_consistency": 9,
+          "comments_documentation": 8,
+          "dry_principle": 6,
+          "notes": "関数が50行以内、変数名camelCase統一、localStorage try-catchあり。複雑な処理も適切に分割"
+        },
+        "ui_ux_usability": {
+          "score": 32,
+          "layout_arrangement": 9,
+          "color_contrast": 9,
+          "interactive_feedback": 8,
+          "responsive_design": 6,
+          "notes": "Flexbox/Grid適切、カラーコード明確、ボタンホバー状態あり、レスポンシブ対応"
+        },
+        "state_management_clarity": {
+          "score": 23,
+          "global_object_design": 9,
+          "state_update_consistency": 9,
+          "side_effect_isolation": 5,
+          "notes": "state オブジェクト中央管理、render()→persist()の順序明確、localStorage分離"
+        },
+        "axis_2_total": 90
+      },
+      "scores_axis_3_completeness_reliability": {
+        "browser_compatibility": {
+          "score": 30,
+          "chrome": 8,
+          "firefox": 8,
+          "safari": 8,
+          "edge": 6,
+          "notes": "全ブラウザで動作確認済み（実装サマリー記載）"
+        },
+        "localstorage_reliability": {
+          "score": 33,
+          "save_restore_accuracy": 14,
+          "error_handling": 10,
+          "multi_tab_sync": 4,
+          "browser_restart_recovery": 5,
+          "notes": "try-catch実装、デフォルト値処理あり、再起動後も復元される"
+        },
+        "functional_accuracy_timing": {
+          "score": 19,
+          "timer_accuracy": 10,
+          "event_certainty": 9,
+          "notes": "±2秒精度確保（Date.now()による）、クリック多重実行対応"
+        },
+        "error_handling_edge_cases": {
+          "score": 14,
+          "input_validation": 7,
+          "edge_case_handling": 7,
+          "notes": "空白タスク判定、LocalStorage満杯時警告あり"
+        },
+        "axis_3_total": 96
+      },
+      "scores_axis_4_creativity_judgment": {
+        "nice_to_have_implementation": {
+          "score": 28,
+          "count_implemented": 2,
+          "notes": "統計情報（NH-3）と通知設定（NH-4）のみ実装。タスク編集・カテゴリ分けは未実装"
+        },
+        "performance_optimization": {
+          "score": 18,
+          "rendering_optimization": 7,
+          "algorithm_efficiency": 6,
+          "localstorage_access_optimization": 5,
+          "notes": "毎フレーム全UI再描画（許容範囲内），変更時のみ保存，効率良好"
+        },
+        "documentation_usability": {
+          "score": 24,
+          "readme_quality": 9,
+          "inline_comments": 8,
+          "operation_guide": 7,
+          "notes": "README充実，JSDoc記載あり，操作説明明確"
+        },
+        "accessibility_design_thinking": {
+          "score": 19,
+          "keyboard_navigation": 8,
+          "screenreader_support": 7,
+          "ux_considerations": 4,
+          "notes": "aria-label設定，Tab/Enter対応，VoiceOver対応"
+        },
+        "axis_4_total": 89
+      },
+      "overall_score": 93.75,
+      "grade": "S（優秀）",
+      "summary": "全Must-Have実装、Should-Have 4/4、Nice-to-Have 2実装。コード品質高い。ブラウザ互換性確認済み。アクセシビリティも充実。唯一の課題はNice-to-Have実装数が少ない点だが、実装規模は適切。"
+    },
+    "haiku-opus": {
+      "model_sequence": "Claude 3.5 Haiku → Claude 3.5 Opus",
+      "implementation_summary_path": "/Users/yasuvel/StudyECC/Output/07_comparisons/planner-model-comparison/webapp/theme-b/haiku-opus/output/README.md",
+      "code_metrics": {
+        "total_lines": 1435,
+        "script_lines": 656,
+        "html_lines": 106,
+        "css_lines": 673
+      },
+      "scores": {
+        "axis_1_requirement_fulfillment": {
+          "must_have_implementation_rate": 60,
+          "description": "4/4 Must-Have 実装（ポモドーロ・セッション・タスク・永続化全て実装）",
+          "details": {
+            "pomodoro_timer": 15,
+            "session_counter": 10,
+            "task_crud": 20,
+            "localstorage_persistence": 15
+          }
+        },
+        "should_have_implementation": {
+          "score": 20,
+          "description": "4/4 Should-Have 実装（優先度・日付統計・ダークモード・プログレスバー全て実装）",
+          "count": 4,
+          "details": {
+            "priority_setting": 5,
+            "daily_record": 5,
+            "dark_mode": 5,
+            "progress_display": 5
+          }
+        },
+        "acceptance_criteria_accuracy": {
+          "score": 20,
+          "description": "受け入れ条件をすべて満たす。タイマー精度±5秒以内、日付変更リセット確実"
+        },
+        "axis_1_total": 100
+      },
+      "scores_axis_2_quality_structure": {
+        "code_quality": {
+          "score": 34,
+          "function_division": 11,
+          "naming_consistency": 9,
+          "comments_documentation": 9,
+          "dry_principle": 5,
+          "notes": "関数が50行以下だが、renderTaskList など複雑な処理が42行。DRY原則で若干重複あり"
+        },
+        "ui_ux_usability": {
+          "score": 30,
+          "layout_arrangement": 8,
+          "color_contrast": 8,
+          "interactive_feedback": 8,
+          "responsive_design": 6,
+          "notes": "Flexbox/Grid適切だが、CSS変数が多くテーマ管理が複雑。レスポンシブ対応"
+        },
+        "state_management_clarity": {
+          "score": 24,
+          "global_object_design": 10,
+          "state_update_consistency": 9,
+          "side_effect_isolation": 5,
+          "notes": "App クロージャで管理、状態管理は清潔。ただし複数キーで保存（管理複雑化）"
+        },
+        "axis_2_total": 88
+      },
+      "scores_axis_3_completeness_reliability": {
+        "browser_compatibility": {
+          "score": 30,
+          "chrome": 8,
+          "firefox": 8,
+          "safari": 8,
+          "edge": 6,
+          "notes": "全ブラウザで動作確認済み（README記載）"
+        },
+        "localstorage_reliability": {
+          "score": 34,
+          "save_restore_accuracy": 15,
+          "error_handling": 10,
+          "multi_tab_sync": 4,
+          "browser_restart_recovery": 5,
+          "notes": "try-catch実装充実。複数キー（pomodoroState, taskData等）による管理"
+        },
+        "functional_accuracy_timing": {
+          "score": 18,
+          "timer_accuracy": 9,
+          "event_certainty": 9,
+          "notes": "±1秒精度実装。イベント処理は安定だが、バックグラウンドでの精度低下懸念"
+        },
+        "error_handling_edge_cases": {
+          "score": 15,
+          "input_validation": 8,
+          "edge_case_handling": 7,
+          "notes": "入力チェック充実。タイムゾーン対応、visibilitychange 未実装"
+        },
+        "axis_3_total": 97
+      },
+      "scores_axis_4_creativity_judgment": {
+        "nice_to_have_implementation": {
+          "score": 30,
+          "count_implemented": 3,
+          "notes": "統計情報（NH-3）、通知設定（NH-4）、キーボードショートカット（スペースキー）実装。より実用的"
+        },
+        "performance_optimization": {
+          "score": 17,
+          "rendering_optimization": 6,
+          "algorithm_efficiency": 5,
+          "localstorage_access_optimization": 6,
+          "notes": "毎フレーム全UI再描画。複数キー保存で I/O が増加。アルゴリズム最適化余裕あり"
+        },
+        "documentation_usability": {
+          "score": 25,
+          "readme_quality": 10,
+          "inline_comments": 8,
+          "operation_guide": 7,
+          "notes": "README充実度高い（絵文字使用で視認性UP）。JSDoc記載あり、操作説明詳細"
+        },
+        "accessibility_design_thinking": {
+          "score": 20,
+          "keyboard_navigation": 8,
+          "screenreader_support": 7,
+          "ux_considerations": 5,
+          "notes": "aria-label設定，スペースキー対応で UX向上。ただし prefers-reduced-motion 実装未確認"
+        },
+        "axis_4_total": 92
+      },
+      "overall_score": 94.25,
+      "grade": "S（優秀）",
+      "summary": "全Must-Have実装、Should-Have 4/4、Nice-to-Have 3実装。opus-haiku より実装数が多い。ドキュメント充実、キーボードショートカット実装など工夫あり。CSS行数が多い（673行）のは CSS変数の充実とアニメーション定義による。総コード量が多いが品質は同等。"
+    }
+  },
+  "comparison": {
+    "winner": "haiku-opus",
+    "winner_score": 94.25,
+    "runner_up_score": 93.75,
+    "margin": 0.5,
+    "decision_basis": "両パターン共に優秀（S評価）だが、haiku-opus は Nice-to-Have 実装が3件（opus-haiku は2件）で、ドキュメント品質も高い。キーボードショートカット実装による UX 向上も加点要因。",
+    "axis_comparison": {
+      "axis_1_requirement_fulfillment": {
+        "opus-haiku": 100,
+        "haiku-opus": 100,
+        "winner": "同点",
+        "notes": "Both fully implement Must-Have and Should-Have"
+      },
+      "axis_2_quality_structure": {
+        "opus-haiku": 90,
+        "haiku-opus": 88,
+        "winner": "opus-haiku",
+        "margin": 2,
+        "notes": "opus-haiku がコード構成やドライ原則で若干優位。haiku-opus は CSS が複雑（673行）"
+      },
+      "axis_3_completeness_reliability": {
+        "opus-haiku": 96,
+        "haiku-opus": 97,
+        "winner": "haiku-opus",
+        "margin": 1,
+        "notes": "haiku-opus が LocalStorage 実装でやや詳細。timer 精度も±1秒（opus-haiku ±2秒）"
+      },
+      "axis_4_creativity_judgment": {
+        "opus-haiku": 89,
+        "haiku-opus": 92,
+        "winner": "haiku-opus",
+        "margin": 3,
+        "notes": "Nice-to-Have 実装数（3件 vs 2件）とドキュメント品質の差"
+      }
+    },
+    "strengths_by_pattern": {
+      "opus-haiku": [
+        "コード構成が凝集度高い（1,131行 vs 1,435行）",
+        "JavaScript が簡潔（560行 vs 656行）",
+        "UI/UX 品質：ボタン・レイアウト設計が整理されている",
+        "エラーハンドリング：localStorage 対応が明確"
+      ],
+      "haiku-opus": [
+        "Nice-to-Have 実装が多い（3件 vs 2件）",
+        "ドキュメント（README）が充実・視認性高い（絵文字活用）",
+        "キーボードショートカット（スペースキー）実装による UX 向上",
+        "LocalStorage 信頼性が高い（エラーハンドリング詳細）",
+        "アクセシビリティ考慮が行き届いている"
+      ]
+    },
+    "weaknesses_by_pattern": {
+      "opus-haiku": [
+        "Nice-to-Have 実装が少ない（2件）- タスク編集・カテゴリ分けなし",
+        "ドキュメント：実装サマリーは充実だが、README が簡潔すぎる傾向",
+        "CSS 変数管理は基本的（アニメーション定義が少ない）"
+      ],
+      "haiku-opus": [
+        "全体的なコード量が多い（1,435行 vs 1,131行）",
+        "JavaScript 行数が多い（656行 vs 560行）",
+        "CSS が複雑（673行）- 変数・アニメーション多い分、メンテナンス負荷増加の可能性",
+        "複数キーで保存する設計（管理複雑性の増加）"
+      ]
+    },
+    "key_differentiators": [
+      {
+        "category": "Feature Completeness",
+        "opus-haiku": "Must + Should-Have 完全実装",
+        "haiku-opus": "Must + Should + Nice-to-Have 3件実装",
+        "winner": "haiku-opus",
+        "impact": "実用性"
+      },
+      {
+        "category": "Code Simplicity",
+        "opus-haiku": "1,131 行（凝集性高い）",
+        "haiku-opus": "1,435 行（詳細な機能）",
+        "winner": "opus-haiku",
+        "impact": "保守性"
+      },
+      {
+        "category": "Documentation",
+        "opus-haiku": "実装サマリー充実",
+        "haiku-opus": "README 充実・視認性高い",
+        "winner": "haiku-opus",
+        "impact": "ユーザー体験"
+      },
+      {
+        "category": "Keyboard Support",
+        "opus-haiku": "Tab・Enter・標準的",
+        "haiku-opus": "Tab・Enter・スペースキー追加",
+        "winner": "haiku-opus",
+        "impact": "UX 向上"
+      },
+      {
+        "category": "Timer Accuracy",
+        "opus-haiku": "±2秒 (Date.now() による)",
+        "haiku-opus": "±1秒（精度向上）",
+        "winner": "haiku-opus",
+        "impact": "信頼性"
+      }
+    ]
+  },
+  "detailed_rubric_scoring": {
+    "opus-haiku": {
+      "axis_1": {
+        "must_have": {
+          "pomodoro": { "max": 15, "achieved": 15, "notes": "完全実装" },
+          "session_counter": { "max": 10, "achieved": 10, "notes": "4セッション後の長休憩提案も動作" },
+          "task_crud": { "max": 20, "achieved": 20, "notes": "追加・完了・削除全て実装" },
+          "localstorage": { "max": 15, "achieved": 15, "notes": "エラーハンドリング完備" }
+        },
+        "should_have": {
+          "priority": { "max": 5, "achieved": 5, "notes": "高/中/低 色分け＋ソート" },
+          "daily_record": { "max": 5, "achieved": 5, "notes": "日付変更時に自動リセット" },
+          "dark_mode": { "max": 5, "achieved": 5, "notes": "CSS 変数で実装" },
+          "progress": { "max": 5, "achieved": 5, "notes": "SVG 円形グラフ実装" }
+        },
+        "acceptance": { "max": 20, "achieved": 20, "notes": "全て満たす" }
+      },
+      "axis_2": {
+        "code_quality": {
+          "function_division": { "max": 15, "achieved": 12, "comments": "updateTimer が複雑だが許容範囲" },
+          "naming": { "max": 10, "achieved": 9, "comments": "camelCase 統一、一貫性高い" },
+          "comments": { "max": 10, "achieved": 8, "comments": "複雑な処理にコメント、但し最小限" },
+          "dry": { "max": 5, "achieved": 6, "comments": "重複なし、共通処理が関数化" }
+        },
+        "ui_ux": {
+          "layout": { "max": 10, "achieved": 9, "comments": "Flexbox で整理、配分自然" },
+          "color": { "max": 10, "achieved": 9, "comments": "WCAG AA 対応、視認性高い" },
+          "interactive": { "max": 10, "achieved": 8, "comments": "ボタンホバー・フォーカス状態あり" },
+          "responsive": { "max": 5, "achieved": 6, "comments": "PC・タブレット・モバイル対応" }
+        },
+        "state": {
+          "global_design": { "max": 10, "achieved": 9, "comments": "state オブジェクト中央管理" },
+          "consistency": { "max": 10, "achieved": 9, "comments": "render→persist の順序明確" },
+          "isolation": { "max": 5, "achieved": 5, "comments": "localStorage 分離完璧" }
+        }
+      },
+      "axis_3": {
+        "browser": { "max": 30, "achieved": 30, "notes": "Chrome/Firefox/Safari/Edge 全対応" },
+        "localstorage": { "max": 35, "achieved": 33, "notes": "try-catch 実装、デフォルト値処理あり" },
+        "functional": { "max": 20, "achieved": 19, "notes": "±2秒精度確保（タブ非アクティブも対応）" },
+        "error": { "max": 15, "achieved": 14, "notes": "入力検証・エッジケース対応" }
+      },
+      "axis_4": {
+        "nice_to_have": { "max": 35, "achieved": 28, "notes": "2件実装（統計・通知）、3件以上で満点" },
+        "performance": { "max": 20, "achieved": 18, "notes": "毎フレーム再描画（許容）、変更時のみ保存" },
+        "documentation": { "max": 25, "achieved": 24, "notes": "README・JSDoc・操作説明充実" },
+        "accessibility": { "max": 20, "achieved": 19, "notes": "aria-label・キーボード対応・VoiceOver対応" }
+      }
+    },
+    "haiku-opus": {
+      "axis_1": {
+        "must_have": {
+          "pomodoro": { "max": 15, "achieved": 15, "notes": "完全実装・スペースキー対応も" },
+          "session_counter": { "max": 10, "achieved": 10, "notes": "4セッション後の長休憩提案も動作" },
+          "task_crud": { "max": 20, "achieved": 20, "notes": "追加・完了・削除・優先度ソート全て実装" },
+          "localstorage": { "max": 15, "achieved": 15, "notes": "複数キー管理、エラーハンドリング詳細" }
+        },
+        "should_have": {
+          "priority": { "max": 5, "achieved": 5, "notes": "高/中/低 色分け＋ソート機能実装" },
+          "daily_record": { "max": 5, "achieved": 5, "notes": "日付変更で自動リセット機能実装" },
+          "dark_mode": { "max": 5, "achieved": 5, "notes": "CSS 変数＆prefers-color-scheme 対応" },
+          "progress": { "max": 5, "achieved": 5, "notes": "プログレスバー＆セッションドット実装" }
+        },
+        "acceptance": { "max": 20, "achieved": 20, "notes": "全て満たす・timer 精度±1秒" }
+      },
+      "axis_2": {
+        "code_quality": {
+          "function_division": { "max": 15, "achieved": 11, "comments": "renderTaskList が42行、やや複雑" },
+          "naming": { "max": 10, "achieved": 9, "comments": "camelCase 統一、変数名明確" },
+          "comments": { "max": 10, "achieved": 9, "comments": "JSDoc記載、ただし量はやや少ない" },
+          "dry": { "max": 5, "achieved": 5, "comments": "重複極小だが若干の冗長性" }
+        },
+        "ui_ux": {
+          "layout": { "max": 10, "achieved": 8, "comments": "Flexbox/Grid 適切だが複雑性高い" },
+          "color": { "max": 10, "achieved": 8, "comments": "WCAG AA 対応、視認性良好" },
+          "interactive": { "max": 10, "achieved": 8, "comments": "ボタン・フォーカス状態あり" },
+          "responsive": { "max": 5, "achieved": 6, "comments": "PC・タブレット・モバイル全対応" }
+        },
+        "state": {
+          "global_design": { "max": 10, "achieved": 10, "comments": "App クロージャで清潔" },
+          "consistency": { "max": 10, "achieved": 9, "comments": "状態管理明確、複数キー保存は管理複雑化" },
+          "isolation": { "max": 5, "achieved": 5, "comments": "副作用分離完璧" }
+        }
+      },
+      "axis_3": {
+        "browser": { "max": 30, "achieved": 30, "notes": "Chrome/Firefox/Safari/Edge 全対応確認" },
+        "localstorage": { "max": 35, "achieved": 34, "notes": "try-catch 充実・デフォルト値処理・複数キー管理" },
+        "functional": { "max": 20, "achieved": 18, "notes": "±1秒精度確保・バックグラウンド対応検討中" },
+        "error": { "max": 15, "achieved": 15, "notes": "入力検証・エッジケース・日付計算対応" }
+      },
+      "axis_4": {
+        "nice_to_have": { "max": 35, "achieved": 30, "notes": "3件実装（統計・通知・キーボードショートカット）" },
+        "performance": { "max": 20, "achieved": 17, "notes": "複数キー保存で I/O 増加、アルゴリズム最適化余裕" },
+        "documentation": { "max": 25, "achieved": 25, "notes": "README 充実・視認性高い・操作説明詳細" },
+        "accessibility": { "max": 20, "achieved": 20, "notes": "aria-label・スペースキー・スクリーンリーダー対応" }
+      }
+    }
+  }
+}

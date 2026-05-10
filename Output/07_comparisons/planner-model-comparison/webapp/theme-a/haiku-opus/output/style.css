@@ -1,0 +1,346 @@
+/* ===================================================================
+ * Markdown Live Preview Editor - Stylesheet
+ * テーマ切替を CSS カスタムプロパティで実現することで、JS 側は
+ * data-theme 属性を切り替えるだけで良く、保守性が向上する。
+ * =================================================================== */
+
+:root {
+  /* Light theme（デフォルト） */
+  --color-bg: #f7f7fa;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f1f3f8;
+  --color-border: #d9dde5;
+  --color-text: #1f2330;
+  --color-text-muted: #5b6172;
+  --color-accent: #4f6df5;
+  --color-accent-contrast: #ffffff;
+  --color-danger: #d04545;
+  --color-code-bg: #eef0f6;
+  --color-code-text: #c0392b;
+  --color-blockquote: #6b7280;
+
+  --font-ui: "Lato", "Noto Sans JP", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-input: var(--font-mono);
+
+  --radius: 6px;
+  --shadow-sm: 0 1px 2px rgba(20, 25, 50, 0.06);
+  --shadow-md: 0 4px 12px rgba(20, 25, 50, 0.08);
+}
+
+[data-theme="dark"] {
+  --color-bg: #14171f;
+  --color-surface: #1c2030;
+  --color-surface-alt: #232838;
+  --color-border: #313646;
+  --color-text: #e6e8ef;
+  --color-text-muted: #9aa0b3;
+  --color-accent: #7c93ff;
+  --color-accent-contrast: #0e1118;
+  --color-danger: #ef6b6b;
+  --color-code-bg: #2a2f40;
+  --color-code-text: #ffb084;
+  --color-blockquote: #a4a9bc;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.55);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-ui);
+  background: var(--color-bg);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* 滑らかなテーマ切替のためのトランジション */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ---------- ヘッダー / ツールバー ---------- */
+
+.app-header {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: 12px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.app-title {
+  font-size: 1.15rem;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.toolbar-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.toolbar-label {
+  white-space: nowrap;
+}
+
+select,
+.btn {
+  font-family: inherit;
+  font-size: 0.875rem;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+}
+
+select:hover,
+.btn:hover {
+  border-color: var(--color-accent);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.btn-danger {
+  color: var(--color-danger);
+  border-color: var(--color-border);
+}
+
+.btn-danger:hover {
+  border-color: var(--color-danger);
+}
+
+.btn-label {
+  margin-left: 4px;
+}
+
+.save-status {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  min-width: 80px;
+  text-align: right;
+}
+
+/* ---------- メインレイアウト ---------- */
+
+.editor-shell {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--color-border);
+  min-height: 0;
+}
+
+.pane {
+  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.pane-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-alt);
+}
+
+/* ---------- 入力エリア ---------- */
+
+.markdown-input {
+  flex: 1;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  resize: none;
+  padding: 18px 20px;
+  font-family: var(--font-input);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  background: var(--color-surface);
+  color: var(--color-text);
+  tab-size: 2;
+}
+
+/* フォント切替: data-input-font 属性で切替（JS から付与） */
+body[data-input-font="monospace"] .markdown-input { font-family: "Courier Prime", ui-monospace, monospace; }
+body[data-input-font="sans"] .markdown-input { font-family: "Lato", system-ui, sans-serif; }
+body[data-input-font="jp"] .markdown-input { font-family: "Noto Sans JP", system-ui, sans-serif; }
+
+/* ---------- プレビューエリア ---------- */
+
+.preview {
+  flex: 1;
+  overflow: auto;
+  padding: 20px 28px;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.preview-placeholder {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.preview h1,
+.preview h2,
+.preview h3,
+.preview h4,
+.preview h5,
+.preview h6 {
+  line-height: 1.3;
+  margin: 1.4em 0 0.6em;
+  font-weight: 700;
+}
+
+.preview h1 { font-size: 2.0rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.3em; }
+.preview h2 { font-size: 1.6rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.25em; }
+.preview h3 { font-size: 1.3rem; }
+.preview h4 { font-size: 1.1rem; }
+.preview h5 { font-size: 1.0rem; }
+.preview h6 { font-size: 0.9rem; color: var(--color-text-muted); }
+
+.preview p {
+  margin: 0.8em 0;
+}
+
+.preview ul,
+.preview ol {
+  margin: 0.6em 0;
+  padding-left: 1.6em;
+}
+
+.preview li { margin: 0.25em 0; }
+
+.preview a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.preview strong { font-weight: 700; }
+.preview em { font-style: italic; }
+
+.preview code {
+  background: var(--color-code-bg);
+  color: var(--color-code-text);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+.preview pre {
+  background: var(--color-code-bg);
+  color: var(--color-text);
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  line-height: 1.55;
+  margin: 1em 0;
+}
+
+.preview pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.preview blockquote {
+  margin: 1em 0;
+  padding: 0.4em 1em;
+  border-left: 4px solid var(--color-border);
+  color: var(--color-blockquote);
+  background: var(--color-surface-alt);
+}
+
+.preview table {
+  border-collapse: collapse;
+  margin: 1em 0;
+  width: auto;
+}
+
+.preview th,
+.preview td {
+  border: 1px solid var(--color-border);
+  padding: 6px 12px;
+  text-align: left;
+}
+
+.preview th {
+  background: var(--color-surface-alt);
+  font-weight: 700;
+}
+
+.preview hr {
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  margin: 1.5em 0;
+}
+
+/* ---------- フッター ---------- */
+
+.app-footer {
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  padding: 8px 20px;
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+/* ---------- レスポンシブ: タブレット以下は上下分割 ---------- */
+
+@media (max-width: 800px) {
+  .editor-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .toolbar { width: 100%; margin-left: 0; }
+  .save-status { margin-left: auto; }
+}
+
+@media (max-width: 480px) {
+  .app-header { padding: 10px 12px; }
+  .markdown-input { padding: 14px 14px; font-size: 0.9rem; }
+  .preview { padding: 14px 16px; }
+}

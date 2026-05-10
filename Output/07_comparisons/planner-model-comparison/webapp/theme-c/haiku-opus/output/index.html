@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>シンプルな習慣トラッカー</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>習慣トラッカー</h1>
+            <p class="subtitle">毎日の習慣を追跡して、モチベーションを維持しよう</p>
+        </header>
+
+        <section class="add-habit-section">
+            <h2>新しい習慣を追加</h2>
+            <form id="habitForm" class="habit-form">
+                <input
+                    type="text"
+                    id="habitInput"
+                    placeholder="習慣名を入力（例：運動、読書）"
+                    maxlength="30"
+                    class="habit-input"
+                    aria-label="新しい習慣の名前"
+                >
+                <button type="submit" class="btn btn-primary">追加</button>
+                <span id="formMessage" class="form-message" role="alert"></span>
+            </form>
+        </section>
+
+        <section class="habits-section">
+            <h2>習慣一覧</h2>
+            <div id="habitsList" class="habits-list">
+                <p class="empty-state">習慣をまだ追加していません。上から追加してください。</p>
+            </div>
+        </section>
+
+        <section class="statistics-section">
+            <h2>統計情報</h2>
+            <div id="statistics" class="statistics">
+                <p class="empty-state">統計情報は習慣追加後に表示されます。</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

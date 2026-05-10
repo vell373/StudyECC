@@ -1,0 +1,88 @@
+diff --git a/src/processor.py b/src/processor.py
+index abcd123..def4567 100644
+--- a/src/processor.py
++++ b/src/processor.py
+@@ -1,3 +1,85 @@
++# QUAL-001: Function too long (exceeds 50 line threshold)
++def process_user_data(user_id, config_dict, request_data, extra_params):
++    # 76 lines total
++    data = request_data.get("data")
++    if data:
++        if len(data) > 0:
++            if data[0].isdigit():
++                if "special" in config_dict:
++                    # QUAL-003: Nesting depth = 5 (exceeds 4 level threshold)
++                    special_val = config_dict["special"]
++                    for item in data:
++                        try:
++                            result = process_item(item)
++                        except:
++                            # QUAL-010: Bare except with empty handling
++                            pass
++                    parsed = parse_data(data, special_val)
++                    if parsed:
++                        validated = validate(parsed)
++                        if validated:
++                            stored = store(validated)
++                            if stored:
++                                log_result(stored)
++    return data
++
++# QUAL-006: Magic number without named constant
++def check_timeout(duration):
++    if duration > 86400:
++        return "timeout_exceeded"
++    return "ok"
++
++# QUAL-004: Cyclomatic complexity > 10
++def evaluate_request(method, path, user_role, is_admin, has_token, is_authenticated, status_code):
++    if method == "GET":
++        if user_role == "admin" or is_admin:
++            return True
++        elif user_role == "user" and has_token:
++            return True
++        elif status_code == 200:
++            if is_authenticated:
++                return True
++            else:
++                return False
++        elif status_code == 401:
++            return False
++        elif path.startswith("/public"):
++            return True
++        elif method == "POST":
++            if is_admin and has_token:
++                return True
++            else:
++                return False
++        else:
++            return False
++    return False
++
++# QUAL-005: Naming convention violation (should be camelCase or UPPER_SNAKE_CASE)
++def get_user_data(MyUser_ID, Config_Settings):
++    # QUAL-008: Duplicate code block
++    result = {}
++    if MyUser_ID:
++        result["id"] = MyUser_ID
++    if Config_Settings:
++        result["config"] = Config_Settings
++    if MyUser_ID:
++        result["id"] = MyUser_ID
++    if Config_Settings:
++        result["config"] = Config_Settings
++    # End of duplicate
++    return result
++
+-# TODO: Add user endpoints
++# QUAL-012: TODO without owner/deadline
++def calculate_hash(data):
++    # TODO: Implement caching layer
++    return hash(data)
++
++# QUAL-009: Dead code (unreachable)
++def process_item(item):
++    if len(item) == 0:
++        return None
++    return item.upper()
++    return item.lower()  # Unreachable code

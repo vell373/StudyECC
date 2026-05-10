@@ -1,0 +1,50 @@
+diff --git a/src/api/user.py b/src/api/user.py
+index 1234567..abcdef0 100644
+--- a/src/api/user.py
++++ b/src/api/user.py
+@@ -1,5 +1,45 @@
+ from fastapi import FastAPI, request
++import pickle
++import hashlib
+
+ app = FastAPI()
+
+-# TODO: User management endpoints
++DB_PASSWORD = "admin123"
++API_KEY_SECRET = "sk-1234567890abcdef"
++
++@app.post("/users")
++def create_user(data: dict):
++    # SEC-001: SQL Injection via string concatenation
++    user_id = data.get("id")
++    query = "INSERT INTO users VALUES (" + str(user_id) + ")"
++    db.execute(query)
++    return {"status": "created"}
++
++@app.get("/user/<user_id>")
++def get_user(user_id):
++    # SEC-001: SQL Injection with f-string
++    name = data.get("name")
++    query = f"SELECT * FROM users WHERE name = '{name}'"
++    result = db.execute(query)
++    return result
++
++@app.post("/api/profile")
++def update_profile(user_id, html_content):
++    # SEC-002: XSS via innerHTML
++    return {
++        "html": html_content,
++        "script": "<script>element.innerHTML = " + html_content + "</script>"
++    }
++
++@app.post("/password/reset")
++def reset_password(password):
++    # SEC-005: MD5 hash (weak cryptography)
++    hashed = hashlib.md5(password.encode()).hexdigest()
++    return {"hash": hashed}
++
++@app.post("/data")
++def deserialize_data(data_blob):
++    # SEC-007: Unsafe pickle.loads
++    obj = pickle.loads(data_blob)
++    return {"data": obj}

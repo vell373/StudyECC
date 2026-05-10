@@ -1,0 +1,37 @@
+{
+  "analysis_id": "req-001-saas-crm",
+  "timestamp": "2026-05-09T10:00:00Z",
+  "priority_axes": {
+    "scalability": {
+      "score": 9,
+      "reason": "ユーザー数 1000 → 100,000 への急速な成長、マルチテナント要件、QPS 100 → 10,000への拡張必須"
+    },
+    "security": {
+      "score": 7,
+      "reason": "SOC 2 Type II準拠、GDPR対応必須だが、HIPAA・PCI-DSS は不要"
+    },
+    "performance": {
+      "score": 6,
+      "reason": "API レスポンス < 200ms、ダッシュボード読み込み < 2秒が要件だが、リアルタイム性は極度には不要"
+    },
+    "development_speed": {
+      "score": 8,
+      "reason": "MVP 3ヶ月でのリリース必須、チームは Python・Node.js 経験者で新規 SaaS開発"
+    }
+  },
+  "project_type": "SaaS",
+  "team_size": 5,
+  "timeline_months": 6,
+  "constraints": [
+    "マルチテナント対応必須",
+    "AWS推奨",
+    "greenfield プロジェクト",
+    "フルリモートチーム",
+    "ユーザー成長予測の変動性あり"
+  ],
+  "key_findings": [
+    "スケーラビリティと開発速度の両立がクリティカル（トレードオフ）",
+    "セキュリティは重要だが、ハイパフォーマンス同等の優先度ではない",
+    "チーム構成から Python・Node.js・Java の採用が現実的"
+  ]
+}

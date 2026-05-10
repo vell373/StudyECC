@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>シンプルな習慣トラッカー</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>習慣トラッカー</h1>
+            <p class="subtitle">毎日の習慣を追跡してモチベーションを維持</p>
+        </header>
+
+        <main class="main">
+            <!-- 習慣追加フォーム -->
+            <section class="add-habit-section">
+                <h2>習慣を追加</h2>
+                <form id="addHabitForm" class="add-habit-form">
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            id="habitInput"
+                            placeholder="例：朝ジョギング、読書、瞑想..."
+                            maxlength="50"
+                            class="habit-input"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="colorInput">色を選択:</label>
+                        <input
+                            type="color"
+                            id="colorInput"
+                            value="#4CAF50"
+                            class="color-input"
+                        />
+                    </div>
+                    <button type="submit" class="btn btn-primary">追加</button>
+                    <span id="habitCountMessage" class="habit-count-message"></span>
+                </form>
+            </section>
+
+            <!-- 習慣リスト -->
+            <section class="habits-section">
+                <h2>あなたの習慣</h2>
+                <div id="habitsList" class="habits-list">
+                    <p class="empty-message">習慣をまだ追加していません。上から追加してみましょう！</p>
+                </div>
+            </section>
+
+            <!-- 週ビュー -->
+            <section class="weekly-view-section">
+                <h2>週ビュー</h2>
+                <div id="weeklyView" class="weekly-view">
+                    <p class="empty-message">習慣と記録がある時に表示されます</p>
+                </div>
+            </section>
+
+            <!-- 統計サマリー -->
+            <section class="stats-section">
+                <h2>本週の統計</h2>
+                <div id="statsContainer" class="stats-container">
+                    <p class="empty-message">データがありません</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

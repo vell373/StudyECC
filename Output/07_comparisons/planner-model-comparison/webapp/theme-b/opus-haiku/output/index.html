@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポモドーロタイマー + タスク管理</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>ポモドーロタイマー</h1>
+            <div class="header-controls">
+                <button id="darkModeToggle" class="dark-mode-btn" aria-label="ダークモード切り替え" title="ダークモード切り替え">
+                    <span class="icon">🌙</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- タイマーセクション -->
+            <section class="timer-section">
+                <div class="timer-display">
+                    <div class="timer-phase" id="timerPhase">集中タイム</div>
+                    <div class="timer-value" id="timerValue">25:00</div>
+                    <div class="timer-progress">
+                        <svg viewBox="0 0 100 100" class="progress-circle">
+                            <circle cx="50" cy="50" r="45" class="progress-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="progress-fill" id="progressFill"></circle>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="timer-controls">
+                    <button id="startBtn" class="btn btn-primary">開始</button>
+                    <button id="pauseBtn" class="btn btn-secondary" disabled>一時停止</button>
+                    <button id="resetBtn" class="btn btn-secondary">リセット</button>
+                </div>
+
+                <div class="session-info">
+                    <div class="info-item">
+                        <span class="label">総セッション数:</span>
+                        <span class="value" id="totalSessions">0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">今日のセッション:</span>
+                        <span class="value" id="todaySessions">0</span>
+                    </div>
+                </div>
+
+                <div id="notification" class="notification hidden"></div>
+            </section>
+
+            <!-- タスク管理セクション -->
+            <section class="task-section">
+                <h2>タスクリスト</h2>
+
+                <div class="task-input-group">
+                    <input
+                        type="text"
+                        id="taskInput"
+                        class="task-input"
+                        placeholder="新しいタスクを入力..."
+                        aria-label="新しいタスク"
+                    >
+                    <select id="prioritySelect" class="priority-select" aria-label="優先度">
+                        <option value="low">低</option>
+                        <option value="medium" selected>中</option>
+                        <option value="high">高</option>
+                    </select>
+                    <button id="addTaskBtn" class="btn btn-primary">追加</button>
+                </div>
+
+                <ul id="taskList" class="task-list" aria-label="タスク一覧"></ul>
+
+                <div class="task-stats">
+                    <span>全体: <strong id="totalTaskCount">0</strong></span>
+                    <span>完了: <strong id="completedTaskCount">0</strong></span>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>ポモドーロ・テクニックで集中力を高めましょう</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

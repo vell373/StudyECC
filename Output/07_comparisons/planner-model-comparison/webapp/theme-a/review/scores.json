@@ -1,0 +1,68 @@
+{
+  "task_type": "webapp",
+  "theme": "Markdown Live Preview Editor",
+  "evaluated_at": "2026-05-09T00:00:00+09:00",
+  "rubric_path": "/Users/yasuvel/StudyECC/Output/07_comparisons/planner-model-comparison/rubrics/webapp-rubric.md",
+  "patterns": {
+    "opus-haiku": {
+      "scores": {
+        "requirements_fulfillment": 8,
+        "quality_structure": 7,
+        "completeness_functionality": 7,
+        "creativity_judgment": 7
+      },
+      "total": 29,
+      "score_rationale": {
+        "requirements_fulfillment": "Must-Have 4/4・Should-Have 3/3 を完全達成し、Nice-to-Have も HTML コピー・リセットの 2/4 を実装している。テーブル未対応はあるが、必須要件の受け入れ条件（100ms プレビュー・XSS 対策・localStorage 保存/復元）はすべて明示的に対処されている。",
+        "quality_structure": "storage オブジェクト・MarkdownParser クラス・EditorApp クラスの3層分割で責務は明確。ただし script.js が 350 行を超えており、仕様の 300 行基準を超過している。見出し変換メソッドで H3/H2/H1 を先に適用し H4-H6 を後処理するなど、変換順序のバグリスクが残る。命名規則（camelCase）は統一されており、コメントも「なぜ」を記載している。",
+        "completeness_functionality": "テーブル対応が未実装のため Nice-to-Have の一部機能が欠如。ブラウザ互換性はモジュール型スクリプト（type=module）を使用しており主要4ブラウザで動作すると見られるが、印刷対応は @media print として CSS に実装済みで評価点に加算できる。localStorage のエラーハンドリングは try/catch で実装済み。複数タブ同期は未実装。",
+        "creativity_judgment": "コードブロック保護（プレースホルダ方式）・XSS 対策・beforeunload による保険保存など、仕様外の安全策を複数実装。印刷用 @media print も Nice-to-Have として仕様に明記されていなかったが追加実装している。ただしデフォルトテキストがなく、初回起動時に空画面になる点はユーザー体験上やや惜しい。アクセシビリティは aria-label を一部付与しているが、aria-live や aria-pressed は未設定。"
+      },
+      "notable_strengths": [
+        "storage / MarkdownParser / EditorApp の3層クラス分割によりコードの読み取り・拡張が容易",
+        "印刷対応 (@media print) を仕様に記載がない段階で先行実装しており、プロダクション品質に近い",
+        "Tab キーによるインデント挿入機能がユーザー体験を高める工夫として機能している",
+        "XSS 対策・beforeunload 保険保存・プライベートブラウジング対応が堅牢に実装されている"
+      ],
+      "notable_weaknesses": [
+        "script.js が 350 行を超え、仕様の 300 行基準に違反している",
+        "見出し変換の正規表現適用順 (H3 → H2 → H1 → H4 → H5 → H6) がバグを起こす可能性がある（H1 を先に処理すると H6 の「######」が H1 の「#」にマッチしてしまうリスク）",
+        "Nice-to-Have のテーブル対応が未実装",
+        "初回起動時にデフォルトテキストがなく、ユーザーが最初に何が表示されるか不明瞭"
+      ]
+    },
+    "haiku-opus": {
+      "scores": {
+        "requirements_fulfillment": 9,
+        "quality_structure": 9,
+        "completeness_functionality": 8,
+        "creativity_judgment": 9
+      },
+      "total": 35,
+      "score_rationale": {
+        "requirements_fulfillment": "Must-Have 4/4・Should-Have 3/3 を完全達成。Nice-to-Have もテーブル対応・HTML コピー・リセットの 3/3（仕様に記載の項目すべて）を実装しており、印刷以外は完全網羅。デバウンス 100ms・XSS 対策・localStorage 保存/復元の受け入れ条件が明示的に対処されている。引用ブロック（blockquote）も仕様外で追加実装。",
+        "quality_structure": "IIFE による名前空間分離・state オブジェクトへの一元的状態管理・DOM 参照を dom オブジェクトに集約という設計が一貫している。parseMarkdown（ブロック） / parseInline（インライン） / collectList / buildTable と関数が細かく分割されており、1 関数 50 行以下を遵守。全体が 494 行だが IIFE と複数関数の明確な分割により可読性は高い。命名も一貫してわかりやすい。",
+        "completeness_functionality": "テーブル対応・引用ブロック・複数タブ同期（storage イベント）など追加実装が多く完成度が高い。インラインコードのプレースホルダ退避も parseInline 内に隔離されており信頼性が高い。ただし localStorage の QuotaExceededError 時の UI 通知は console.warn のみで、ユーザーへの可視警告は未実装。複数タブ同期は実装されており他パターンより優位。",
+        "creativity_judgment": "デフォルトテキスト（対応記法サンプルを含む）を初回起動時に表示する点がユーザー体験上秀逸。aria-live・aria-pressed・aria-label を積極的に使用しておりアクセシビリティが高い。保存ステータスの「入力中… / 保存済み / 復元しました」という多段階フィードバックや、リンクへの target=_blank + rel=noopener noreferrer 付与など、細部の品質が高い。別タブ同期という仕様外機能も追加実装されている。"
+      },
+      "notable_strengths": [
+        "IIFE + state オブジェクトによる名前空間の完全な分離と状態の一元管理",
+        "テーブル・引用ブロック・複数タブ同期など、仕様に明記された要件を超える追加実装",
+        "aria-live / aria-pressed / aria-label を積極利用したアクセシビリティへの配慮",
+        "初回起動時のデフォルトテキストで対応記法サンプルを表示し、学習曲線を低減するUX設計",
+        "イタリック変換で ** 処理後の残余 * のみを対象にする正規表現が正確"
+      ],
+      "notable_weaknesses": [
+        "localStorage QuotaExceededError 時のユーザー向け可視警告 UI が未実装（console.warn のみ）",
+        "script.js が 494 行と長く、仕様の 300 行基準を大幅に超過している（ただし関数分割は適切）",
+        "印刷対応（@media print）が未実装",
+        "見出し変換でインライン要素（太字等）がネストされた場合の動作は部分的にのみ対応"
+      ]
+    }
+  },
+  "comparison": {
+    "score_difference": -6,
+    "winner": "haiku-opus",
+    "quality_gap_analysis": "haiku-opus は状態管理の設計（IIFE + state オブジェクト）・関数分割の細かさ・アクセシビリティへの投資・テーブルや引用ブロックなどの追加実装において opus-haiku を一貫して上回っている。opus-haiku は Opus Planner の詳細仕様をほぼ忠実に実装したが、Haiku Generator がコード量・実装密度の観点で制約を受けた可能性があり、仕様書の 300 行基準違反・テーブル非対応・デフォルトテキスト欠如など実装の細部で及ばなかった。一方 haiku-opus は Haiku Planner の仕様が若干抽象的だった分、Opus Generator が設計上の判断を自律的に埋めることで結果的により完成度の高い成果物を生み出した。"
+  }
+}

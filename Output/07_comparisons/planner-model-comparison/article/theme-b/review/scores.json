@@ -1,0 +1,118 @@
+{
+  "theme": "B「コンテキストエンジニアリング入門：プロンプトより強力な設計技術」",
+  "evaluation_date": "2026-05-09",
+  "rubric_version": "article-rubric.md",
+  "patterns": [
+    {
+      "pattern_id": "A",
+      "name": "Opus-Haiku",
+      "planner_model": "Claude Opus",
+      "generator_model": "Claude Haiku",
+      "article_path": "/Users/yasuvel/StudyECC/Output/07_comparisons/planner-model-comparison/article/theme-b/opus-haiku/output/article.md",
+      "char_count": 2948,
+      "scores": {
+        "requirement_fulfillment": {
+          "char_count": 20,
+          "composition": 20,
+          "code_examples": 20,
+          "practicality": 20,
+          "comparison_reference": 20,
+          "subtotal": 100,
+          "notes": "文字数範囲内、6セクション完全、実装例4つ、比較表あり"
+        },
+        "quality_structure": {
+          "logical_composition": 20,
+          "persuasiveness": 19,
+          "target_audience": 15,
+          "markdown_format": 15,
+          "term_consistency": 14,
+          "diagrams": 12,
+          "subtotal": 95,
+          "notes": "導入から実装まで論理的。セッション消滅の具体的課題提示が説得力を強化。テーブル2個で視覚化"
+        },
+        "completeness_operability": {
+          "code_executability": 18,
+          "file_configuration": 18,
+          "agent_integration": 18,
+          "stop_condition": 14,
+          "implementation_notes": 18,
+          "subtotal": 86,
+          "notes": "フック設定は実行可能レベル。ECC パスを明記。エージェント連携の説明は明確"
+        },
+        "creativity_judgment": {
+          "original_analysis": 17,
+          "merit_demerit_balance": 16,
+          "application_examples": 12,
+          "evidence_documentation": 14,
+          "privacy_ethics": 14,
+          "action_invocation": 12,
+          "subtotal": 85,
+          "notes": "スケーラビリティ・一貫性の観点からの掘り下げ。プロンプト価値を認めつつ限界指摘。具体的なアクション喚起"
+        }
+      },
+      "overall_score": 93.45,
+      "overall_grade": "S",
+      "overall_description": "優秀 - 全ての要件を完全に満たし、創造性・分析も優れた記事。そのまま公開可能。"
+    },
+    {
+      "pattern_id": "B",
+      "name": "Haiku-Opus",
+      "planner_model": "Claude Haiku",
+      "generator_model": "Claude Opus",
+      "article_path": "/Users/yasuvel/StudyECC/Output/07_comparisons/planner-model-comparison/article/theme-b/haiku-opus/output/article.md",
+      "char_count": 3220,
+      "scores": {
+        "requirement_fulfillment": {
+          "char_count": 20,
+          "composition": 20,
+          "code_examples": 20,
+          "practicality": 20,
+          "comparison_reference": 20,
+          "subtotal": 100,
+          "notes": "文字数範囲内、6セクション完全、実装例3つ、比較表と限界表あり"
+        },
+        "quality_structure": {
+          "logical_composition": 20,
+          "persuasiveness": 19,
+          "target_audience": 15,
+          "markdown_format": 15,
+          "term_consistency": 14,
+          "diagrams": 14,
+          "subtotal": 97,
+          "notes": "読者共感から開始。限界を表で4点に分類し説得力高い。テーブル3個で構造化。用語の言い換え充実"
+        },
+        "completeness_operability": {
+          "code_executability": 15,
+          "file_configuration": 19,
+          "agent_integration": 16,
+          "stop_condition": 15,
+          "implementation_notes": 13,
+          "subtotal": 78,
+          "notes": "ルール例は実存ファイルから抜粋も、スキル・フックは疑似コード（参考実装レベル）。エラーハンドリング明記あり"
+        },
+        "creativity_judgment": {
+          "original_analysis": 15,
+          "merit_demerit_balance": 16,
+          "application_examples": 13,
+          "evidence_documentation": 13,
+          "privacy_ethics": 14,
+          "action_invocation": 13,
+          "subtotal": 84,
+          "notes": "「再利用可能な設計資産」という定義が独自。スケーラビリティの構造化は良い。実装ポイントの4ステップアプローチが応用的"
+        }
+      },
+      "overall_score": 92.3,
+      "overall_grade": "S",
+      "overall_description": "優秀 - 要件をすべて満たし、品質も高い。初心者向けの説明が丁寧で、実装ポイントの構造化が優れている。"
+    }
+  ],
+  "comparison_summary": {
+    "winner_by_score": "パターンA（Opus-Haiku）が1.15点上回る",
+    "key_differences": {
+      "requirement_fulfillment": "A: 100点、B: 100点 - 同等",
+      "quality_structure": "A: 95点、B: 97点 - B がテーブル活用と用語説明で優位",
+      "completeness_operability": "A: 86点、B: 78点 - A がフック設定の実行可能性で優位",
+      "creativity_judgment": "A: 85点、B: 84点 - A がオリジナル分析で若干優位"
+    }
+  }
+}

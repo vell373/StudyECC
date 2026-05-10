@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Live Preview Editor</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="logo">Markdown Editor</h1>
+      <div class="header-controls">
+        <select id="fontSelect" class="font-select" aria-label="Font selection">
+          <option value="mono">Monospace</option>
+          <option value="sans">Sans-serif</option>
+        </select>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="editor-container">
+      <!-- Left pane: Markdown input -->
+      <section class="pane input-pane">
+        <textarea
+          id="markdownInput"
+          class="markdown-input"
+          placeholder="Enter your Markdown here...
+# Heading 1
+## Heading 2
+
+**Bold text** and *italic text*
+
+- Unordered list
+- Item 2
+
+1. Ordered list
+2. Item 2
+
+`inline code`
+
+[Link](https://example.com)
+
+```
+code block
+```"
+          spellcheck="false"
+        ></textarea>
+      </section>
+
+      <!-- Right pane: HTML preview -->
+      <section class="pane preview-pane">
+        <div id="previewOutput" class="preview-output"></div>
+      </section>
+    </main>
+
+    <!-- Footer with utilities -->
+    <footer class="footer">
+      <button id="copyButton" class="footer-button" aria-label="Copy preview HTML">Copy HTML</button>
+      <button id="resetButton" class="footer-button danger" aria-label="Reset editor">Reset</button>
+      <span id="saveStatus" class="save-status">Ready</span>
+    </footer>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

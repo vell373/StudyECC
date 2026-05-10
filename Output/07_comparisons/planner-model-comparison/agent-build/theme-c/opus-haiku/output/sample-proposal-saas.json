@@ -1,0 +1,71 @@
+{
+  "proposal_id": "prop-001-saas-crm",
+  "timestamp": "2026-05-09T10:05:00Z",
+  "candidates": [
+    {
+      "rank": 1,
+      "set_id": "node_express_pg",
+      "set_name": "Node.js + Express + PostgreSQL + AWS",
+      "language": "Node.js 18+",
+      "framework": "Express 4.18",
+      "database": "PostgreSQL 15",
+      "cloud": "AWS",
+      "justification": "スケーラビリティと開発速度のバランスが最適。非同期I/Oで高スループット対応、npm エコシステム充実、AWS とのネイティブ統合良好。チーム学習コスト中程度。",
+      "pros": [
+        "スケーラビリティ: 非同期I/O、水平スケーリング対応、ロードバランシング容易",
+        "開発速度: npm エコシステム充実、Express の習得が容易（Django比で 20% 短期）",
+        "チーム採用: Node.js 経験者は採用市場で多く、新規メンバー追加が容易",
+        "パフォーマンス: C10K 問題に強い、マイクロサービス化も将来可能"
+      ],
+      "cons": [
+        "セキュリティ: Spring Security 比で認証・認可フレームワークが若干薄い（実装工数 +2週間）",
+        "メモリ効率: Python・Go 比でメモリ消費が多め（オートスケーリング設定で対応）",
+        "チーム学習: Java 経験者の学習曲線が陡峻（言語パラダイム異なるため）"
+      ]
+    },
+    {
+      "rank": 2,
+      "set_id": "python_django_pg",
+      "set_name": "Python + Django + PostgreSQL + AWS",
+      "language": "Python 3.11",
+      "framework": "Django 4.2",
+      "database": "PostgreSQL 15",
+      "cloud": "AWS",
+      "justification": "開発速度最優先の場合の最適選択。Django の充実したフレームワーク、ORM、セキュリティ機能（csrf・認証・認可）により MVP を最速で実装可能。チーム Python 経験者 2名で即座に開発開始可能。",
+      "pros": [
+        "開発速度: Django の batteries-included 設計で、認証・ORM・admin パネル等が標準装備。MVP 3ヶ月達成で最確実。",
+        "セキュリティ: Django の csrf 保護・sql インジェクション対策が標準、セキュリティベストプラクティスが組み込まれている",
+        "チーム採用: Python 経験者 2名即座に対応、新規エンジニア採用も容易（Python 人気言語）",
+        "ライブラリ: データサイエンス・機械学習連携（pandas・sklearn・TensorFlow）が今後の拡張で有利"
+      ],
+      "cons": [
+        "スケーラビリティ: C10K 問題への対応工夫必須（gunicorn ワーカー数調整・非同期タスクキュー導入），大規模化時にスケーリング複雑化",
+        "パフォーマンス: Node.js 比で 1.5-2倍遅い（CPU バウンド処理では顕著）",
+        "メモリ効率: GIL（Global Interpreter Lock）により、CPU コアの完全並列化困難"
+      ]
+    },
+    {
+      "rank": 3,
+      "set_id": "java_spring_pg",
+      "set_name": "Java + Spring Boot + PostgreSQL + AWS",
+      "language": "Java 17",
+      "framework": "Spring Boot 3.0",
+      "database": "PostgreSQL 15",
+      "cloud": "AWS",
+      "justification": "エンタープライズ向け堅牢性、セキュリティ、長期保守性を重視する場合の選択。Spring Security による豊富な認証・認可、大規模分散システムへの拡張性、商用サポート体制充実。",
+      "pros": [
+        "セキュリティ: Spring Security フレームワークが充実、GDPR 対応のためのアクセス制御・監査ログが実装容易",
+        "スケーラビリティ: マイクロサービス化容易（Spring Cloud），Netflix Eureka・Hystrix 等エコシステム充実",
+        "長期保守性: Java エコシステムが成熟、長期のメンテナンス・サポート確実（20年以上の実績）",
+        "チーム拡張: Java 経験者多く（市場でも豊富），スケーラビリティニーズに応じた採用容易"
+      ],
+      "cons": [
+        "開発速度: セットアップ・ボイラープレート複雑（Gradle/Maven 設定），MVP まで +4-6週間増加",
+        "学習曲線: Python 経験者にとって言語・フレームワーク両面で学習コスト大（3ヶ月で習得想定）",
+        "起動時間: Spring Boot アプリケーションの起動が数秒要する（サーバーレス環境では非効率）",
+        "リソース効率: 最小構成でも 512MB RAM 必須、マイクロサービス化時にリソース増加"
+      ]
+    }
+  ],
+  "analysis_notes": "SaaS プロジェクトの典型的なニーズ（スケーラビリティ + 開発速度）に対応する 3 候補を提案。Node.js がバランス最適だが、チーム構成（Python 経験者 2名）を考慮すると Django の即時対応メリットも大きい。Java は将来の大規模化・マイクロサービス化に備える場合に有効。6ヶ月 MVP 期限を鑑みると、Node.js または Django を推奨。"
+}

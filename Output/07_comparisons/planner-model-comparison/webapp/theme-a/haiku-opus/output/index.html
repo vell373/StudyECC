@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>マークダウン ライブプレビュー エディター</title>
+  <!-- Google Fonts CDN: 入力エリアのフォント切替用に2種類読み込む -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header" role="banner">
+    <h1 class="app-title">Markdown Live Preview</h1>
+    <div class="toolbar" role="toolbar" aria-label="エディターツールバー">
+      <label class="toolbar-item">
+        <span class="toolbar-label">フォント</span>
+        <select id="font-select" aria-label="入力フォントを選択">
+          <option value="monospace">Monospace（Courier Prime）</option>
+          <option value="sans">Sans-serif（Lato）</option>
+          <option value="jp">日本語（Noto Sans JP）</option>
+        </select>
+      </label>
+      <button id="theme-toggle" type="button" class="btn" aria-pressed="false" aria-label="ライト/ダークモード切替">
+        <span aria-hidden="true">🌙</span><span class="btn-label">ダーク</span>
+      </button>
+      <button id="copy-html" type="button" class="btn" aria-label="生成されたHTMLをクリップボードにコピー">
+        HTMLコピー
+      </button>
+      <button id="reset-text" type="button" class="btn btn-danger" aria-label="入力テキストを初期化">
+        リセット
+      </button>
+      <span id="save-status" class="save-status" role="status" aria-live="polite">準備完了</span>
+    </div>
+  </header>
+
+  <main class="editor-shell">
+    <section class="pane pane-editor" aria-label="マークダウン入力エリア">
+      <h2 class="pane-title">エディター</h2>
+      <textarea
+        id="markdown-input"
+        class="markdown-input"
+        spellcheck="false"
+        aria-label="マークダウンを入力"
+        placeholder="# ようこそ
+ここに **マークダウン** を入力すると、右側にプレビューが表示されます。"
+      ></textarea>
+    </section>
+
+    <section class="pane pane-preview" aria-label="プレビューエリア">
+      <h2 class="pane-title">プレビュー</h2>
+      <article id="preview" class="preview" aria-live="polite">
+        <p class="preview-placeholder">プレビューがここに表示されます</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <small>
+      対応記法: 見出し / 段落 / 太字・イタリック / リスト / コード / リンク / テーブル
+      &nbsp;|&nbsp; 自動保存: LocalStorage
+    </small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

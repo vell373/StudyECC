@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポモドーロタイマー + タスク管理</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダー -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">🍅 ポモドーロタイマー</h1>
+                <button class="theme-toggle" aria-label="テーマ切り替え">🌙</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- タイマーセクション -->
+            <section class="timer-section">
+                <div class="timer-display">
+                    <div class="timer-time" id="timerDisplay">25:00</div>
+                    <div class="timer-status" id="timerStatus">停止中</div>
+                </div>
+
+                <!-- 進捗バー -->
+                <div class="progress-container">
+                    <progress class="progress-bar" id="progressBar" value="0" max="100"></progress>
+                    <div class="progress-text" id="progressText">0%</div>
+                </div>
+
+                <!-- セッションカウンター -->
+                <div class="session-info">
+                    <div class="session-label">本日のセッション</div>
+                    <div class="session-counter">
+                        <span class="session-count" id="sessionCount">0</span>
+                        <span class="session-text">セッション完了</span>
+                    </div>
+                    <div class="session-dots" id="sessionDots"></div>
+                </div>
+
+                <!-- タイマーコントロール -->
+                <div class="timer-controls">
+                    <button class="btn btn-primary" id="startBtn" aria-label="タイマー開始">開始</button>
+                    <button class="btn btn-secondary" id="pauseBtn" aria-label="タイマー一時停止" disabled>一時停止</button>
+                    <button class="btn btn-secondary" id="resetBtn" aria-label="タイマーリセット">リセット</button>
+                </div>
+            </section>
+
+            <!-- タスク管理セクション -->
+            <section class="task-section">
+                <h2 class="section-title">📋 タスク管理</h2>
+
+                <!-- タスク入力フォーム -->
+                <div class="task-input-form">
+                    <input
+                        type="text"
+                        id="taskInput"
+                        class="task-input"
+                        placeholder="新しいタスクを入力..."
+                        aria-label="新規タスク入力"
+                    >
+                    <div class="priority-buttons">
+                        <button class="priority-btn priority-high" id="priorityHigh" aria-label="優先度：高">高</button>
+                        <button class="priority-btn priority-medium active" id="priorityMid" aria-label="優先度：中">中</button>
+                        <button class="priority-btn priority-low" id="priorityLow" aria-label="優先度：低">低</button>
+                    </div>
+                    <button class="btn btn-success" id="addTaskBtn" aria-label="タスク追加">追加</button>
+                </div>
+
+                <!-- タスクリスト -->
+                <div class="task-list" id="taskList" role="list">
+                    <!-- タスクはここに挿入される -->
+                </div>
+
+                <!-- 本日の統計 -->
+                <div class="task-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">総タスク:</span>
+                        <span class="stat-value" id="totalTasks">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">完了:</span>
+                        <span class="stat-value" id="completedTasks">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">進捗:</span>
+                        <span class="stat-value" id="taskProgress">0%</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- フッター -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="footer-text">オフライン完全対応 • LocalStorage で自動保存</p>
+                <button class="btn btn-small" id="resetDayBtn" aria-label="本日のデータをリセット">本日をリセット</button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
